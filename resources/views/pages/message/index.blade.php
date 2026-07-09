@@ -15,7 +15,11 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th>Correo</th>
-                                {{-- <th>Teléfono</th> --}}
+                                <th>Teléfono</th>
+                                <th>RUC</th>
+                                <th>Servicio</th>
+                                <th>Tipo de transporte</th>
+                                <th>Mensaje</th>
                                 <th class="w-32">Acciones</th>
                             </tr>
                         </thead>
@@ -32,11 +36,14 @@
                                         
                                     </td>
                                     <td class="dark:bg-slate-800">{{$item->email}}</td>
-                                    {{-- <td>{{$item->phone}}</td> --}}
+                                    <td class="dark:bg-slate-800">{{$item->phone}}</td>
+                                    <td class="dark:bg-slate-800">{{$item->ruc}}</td>
+                                    <td class="dark:bg-slate-800">{{$item->service_product_servicio}}</td>
+                                    <td class="dark:bg-slate-800">{{$item->service_product}}</td>
+                                    <td class="dark:bg-slate-800">{{$item->message}}</td>
                                     <td class="flex flex-row items-center justify-center dark:bg-slate-800">
                                         <button method="POST" onclick="borrarmensaje({{ $item->id }})"
                                           class="bg-red-600 p-2 rounded text-white"><i class="fa-regular fa-trash-can"></i></button>
-                                        <!--a href="" class="bg-yellow-400 p-2 rounded text-white mr-6"><i class="fa-regular fa-pen-to-square"></i></a-->
                                     </td>
                                 </tr>    
                             @endforeach
@@ -46,7 +53,11 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th>Correo</th>
-                                {{-- <th>Teléfono</th> --}}
+                                <th>Teléfono</th>
+                                <th>RUC</th>
+                                <th>Servicio</th>
+                                <th>Tipo de transporte</th>
+                                <th>Mensaje</th>
                                 <th>Acciones</th>
                             </tr>
                         </tfoot>
@@ -62,10 +73,15 @@
         $('document').ready(function(){
             new DataTable('#tabladatos', {
             ordering: false,
-            buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
             layout: {
                 topStart: 'buttons'
             },
+            columnDefs: [
+                {
+                    targets: [2, 3, 4, 5, 6],
+                    visible: false
+                }
+            ],
             language: {
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",
@@ -73,39 +89,44 @@
                 "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
                 "infoFiltered": "(filtrado de un total de _MAX_ registros)",
                 "sSearch": "Buscar:",
-                
-                 "sProcessing":"Procesando...",
+                "sProcessing":"Procesando...",
             },
             buttons:[ 
-           
             {
                 extend:    'excelHtml5',
                 text:      '<i class="fas fa-file-excel"></i> ',
                 titleAttr: 'Exportar a Excel',
                 className: 'btn btn-success',
-            },
-            {
-                extend:    'pdfHtml5',
-                text:      '<i class="fas fa-file-pdf"></i> ',
-                titleAttr: 'Exportar a PDF',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6]
+                }
             },
             {
                 extend:    'csvHtml5',
                 text:      '<i class="fas fa-file-csv"></i> ',
-                titleAttr: 'Imprimir',
+                titleAttr: 'Exportar a CSV',
                 className: 'btn btn-info',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6]
+                }
             },
             {
                 extend:    'print',
                 text:      '<i class="fa fa-print"></i> ',
                 titleAttr: 'Imprimir',
                 className: 'btn btn-info',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6]
+                }
             },
             {
                 extend:    'copy',
                 text:      '<i class="fas fa-copy"></i> ',
                 titleAttr: 'Copiar',
                 className: 'btn btn-success',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6]
+                }
             },
         ]
         });

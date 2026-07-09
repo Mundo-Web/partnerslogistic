@@ -5,7 +5,8 @@
             class="col-span-full xl:col-span-8 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
             <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
                 <h2 class="font-semibold text-slate-800 dark:text-slate-100 text-2xl">Mensaje de
-                    {{ $message->full_name }}</h2>
+                    {{ $message->full_name }}
+                </h2>
             </header>
             <div class="p-3">
 
@@ -21,9 +22,9 @@
                                 class="text-[16px]">{{ $message->phone }}</span>
                         </p>
                         <p>
-                          <span class="font-bold text-[18px]">RUC:</span> <span
-                              class="text-[16px]">{{ $message->ruc }}</span>
-                      </p>
+                            <span class="font-bold text-[18px]">RUC:</span> <span
+                                class="text-[16px]">{{ $message->ruc }}</span>
+                        </p>
                         <p>
                             <span class="font-bold text-[18px]">Correo:</span> <span
                                 class="text-[16px]">{{ $message->email }}</span>
@@ -37,6 +38,10 @@
                         <p>
                             <span class="font-bold text-[18px]">Tipo de transporte:</span> <span
                                 class="text-[16px]">{{ $message->service_product }}</span>
+                        </p>
+                        <p>
+                            <span class="font-bold text-[18px]">Mensaje:</span> <span
+                                class="text-[16px]">{{ $message->message ?? 'No hay mensaje' }}</span>
                         </p>
 
                     </div>
