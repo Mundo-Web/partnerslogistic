@@ -16,6 +16,7 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th>Correo</th>
+                                <th>Fecha</th>
                                 <th>Teléfono</th>
                                 <th>RUC</th>
                                 <th>Servicio</th>
@@ -40,6 +41,7 @@
 
                                     </td>
                                     <td class="dark:bg-slate-800">{{$item->email}}</td>
+                                    <td class="dark:bg-slate-800">{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i A') }}</td>
                                     <td class="dark:bg-slate-800">{{$item->phone}}</td>
                                     <td class="dark:bg-slate-800">{{$item->ruc}}</td>
                                     <td class="dark:bg-slate-800">{{$item->service_product_servicio}}</td>
@@ -58,6 +60,7 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th>Correo</th>
+                                <th>Fecha</th>
                                 <th>Teléfono</th>
                                 <th>RUC</th>
                                 <th>Servicio</th>
@@ -83,7 +86,7 @@
                 },
                 columnDefs: [
                     {
-                        targets: [2, 3, 4, 5, 6],
+                        targets: [3, 4, 5, 6, 7],
                         visible: false
                     }
                 ],
@@ -103,7 +106,7 @@
                         titleAttr: 'Exportar a Excel',
                         className: 'btn btn-success',
                         exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5, 6]
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7]
                         }
                     }
 
